@@ -1,0 +1,58 @@
+{% extends 'bootstrap_layout.html' %}
+
+{% block content %}
+
+    <!-- Masthead -->
+    <header class="masthead">
+        <div class="container h-100">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <p class="bg-info" style="padding: 15px;">
+                        {% for message in messages %}
+                            {{ message }}<br>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            {% endwith %}
+
+            <div class="row h-100 align-items-center justify-content-center text-center">
+
+                <div class="col-lg-10 align-self-end">
+                    {% for res in movie_data %}
+                        <font color="white"><h2>Movie: {{ res[0] }} </h2>
+                            <h3> Recommendation: {{ res[1] }} </h3>
+                            <h3> Number of people who rated the movie: {{ res[2] }} </h3><br></font>
+                    {% endfor %}
+                    <hr class="divider my-4">
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Let's Get In Touch!</h2>
+                    <hr class="divider my-4">
+                    <p class="text-muted mb-5"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center">
+                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                    <div>+1 (929) 332-8233</div>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                    <!-- Make sure to change the email address in anchor text AND the link below! -->
+                    <a class="d-block" href="mailto:contact@yourwebsite.com">ab8166@nyu.edu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

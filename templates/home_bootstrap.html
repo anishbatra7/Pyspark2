@@ -1,0 +1,92 @@
+{% extends 'bootstrap_layout.html' %}
+
+{% block content %}
+
+    <!-- Masthead -->
+    <header class="masthead">
+        <div class="container h-100">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <p class="bg-info" style="padding: 15px;">
+                        {% for message in messages %}
+                            {{ message }}<br>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            {% endwith %}
+
+            <script>
+                $('#form123').on('submit', function () {
+                    console.log('%%%');
+                    var val1 = $('#exampleInputEmail1').val();
+                    var val2 = parseInt(val);
+                    url = "url_for('main.movie_ratings',user_id=1, movie_id=3)" {#+ "&userid=" + val2 + "&movie_id=3",#}
+                    console.log('$$$u',url);
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        {#console.log(url)#}
+                        contentType: 'application/json;charset=UTF-8',
+                        data: {'user_id': val2, 'movie_id': 3}
+                    });
+                });
+            </script>
+
+
+            <div class="row h-100 align-items-center justify-content-center text-center">
+
+                <div class="col-lg-10 align-self-end">
+                    <h2 class="text-uppercase text-white font-weight-bold">Project 3 - Movie Recommendations</h2>
+                    <form id="form123" action="/recommendations" method="GET">
+                        <div class="form-group">
+                            <font color="white"> <label for="userid">User ID</label></font>
+                            <input class="form-control" id="userid" name="userid"
+                                   aria-describedby="emailHelp" placeholder="Enter a User ID" value=1>
+                            <small id="emailHelp" class="form-text text-muted"> Hint: enter a user id
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <font color="white"> <label for="movieid">Movie ID</label></font>
+                            <input class="form-control" id="movieid" name="movieid"
+                                   placeholder="Enter a movie ID" value=3>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <font color="white"><label class="form-check-label" for="exampleCheck1">Get top
+                                predictions</label></font>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit123">Submit</button>
+                    </form>
+                    <hr class="divider my-4">
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Let's Get In Touch!</h2>
+                    <hr class="divider my-4">
+                    <p class="text-muted mb-5"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center">
+                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                    <div>+1 (929) 332-8233</div>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                    <!-- Make sure to change the email address in anchor text AND the link below! -->
+                    <a class="d-block" href="mailto:contact@yourwebsite.com">ab8166@nyu.edu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
